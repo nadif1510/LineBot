@@ -50,12 +50,7 @@ def handle_message(event):
 	elif event.message.text=="抽":
 		message = ImageSendMessage(image_url='https://i.imgur.com/8sNfqJl.jpg')
 		line_bot_api.reply_message(event.reply_token, message)
-	elif event.message.text=="天氣":
-		target_url = 'https://works.ioa.tw/weather/api/weathers/1.json'
-		message = ImageSendMessage(target_url = 'https://works.ioa.tw/weather/api/weathers/1.json')
-		r = requests.get(url=target_url)
-		line_bot_api.reply_message(event.reply_token, message)
-		line_bot_api.reply_message(event.reply_token, r)
+
 
 		
 import os
