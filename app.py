@@ -9,6 +9,9 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
+import requests
+
+
 
 app = Flask(__name__)
 
@@ -41,26 +44,19 @@ def handle_message(event):
 	if event.message.text=="MVP":
 		message = TextSendMessage(text="Durant")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif event.message.text=="抽":
-		message = ImageSendMessage(
-		original_content_url='https://i.imgur.com/ebLtiKR.jpg',
-		preview_image_url='https://i.imgur.com/8sNfqJl.jpg')
-		line_bot_api.reply_message(event.reply_token, message)
-	elif event.message.text=="地點":
-		message = LocationSendMessage(
-		title='my location',
-		address='Tokyo',
-		latitude=35.65910807942215,
-		longitude=139.70372892916203)
-		line_bot_api.reply_message(event.reply_token, message)
-	elif event.message.text=="圖":	
-		message = StickerSendMessage(
-		package_id='1',
-		sticker_id='1')
-		line_bot_api.reply_message(event.reply_token, message)
-	else:
-		message = TextSendMessage(text="hi")
+	elif event.message.text=="杜蘭特昶志":
+		message = TextSendMessage(text="拜託揪他打球，他很可憐沒球友")
 		line_bot_api.reply_message(event.reply_token,message)
+	elif event.message.text=="抽":
+		message = ImageSendMessage(image_url='https://i.imgur.com/8sNfqJl.jpg')
+		line_bot_api.reply_message(event.reply_token, message)
+	elif event.message.text=="天氣":
+		target_url = 'https://works.ioa.tw/weather/api/weathers/1.json'
+		message = ImageSendMessage(target_url = 'https://works.ioa.tw/weather/api/weathers/1.json')
+		r = requests.get(url=target_url)
+		line_bot_api.reply_message(event.reply_token, message)
+		line_bot_api.reply_message(event.reply_token, r)
+
 		
 import os
 if __name__ == "__main__":
