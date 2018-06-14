@@ -53,7 +53,7 @@ def handle_message(event):
 		preview_image_url='https://i.imgur.com/ebLtiKR.jpg')
 		line_bot_api.reply_message(event.reply_token, message)
 	elif event.message.text=="uat":
-		message = TextSendMessage(text="帳號cmtest001~003"+\n+"密碼Heaven@4394")
+		message = TextSendMessage(text="帳號cmtest001~003, \n 密碼Heaven@4394")
 		line_bot_api.reply_message(event.reply_token,message)
 
 
