@@ -4,7 +4,7 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
 import requests 
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 #from urllib.request import urlretrieve
 
 app = Flask(__name__)
