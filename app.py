@@ -33,7 +33,7 @@ def callback():
 
 
 @handler.add(MessageEvent, message=TextMessage)
-@handler.add(LocationMessage, TemplateMessage)
+#@handler.add(LocationMessage, TemplateMessage)
 def handle_message(event):
 	if event.message.text=="MVP":
 		message = TextSendMessage(text="Durant")
