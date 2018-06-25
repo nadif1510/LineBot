@@ -187,9 +187,9 @@ def handle_message(event):
 		)
 		line_bot_api.reply_message(event.reply_token,Carousel_template)
 		
-	elif event.message.text == "最新電影":
-		a=movie()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	#elif event.message.text == "最新電影":
+	#	a=movie()
+	#	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 		
 		
 import os
