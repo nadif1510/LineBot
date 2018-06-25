@@ -89,7 +89,7 @@ def handle_message(event):
 			),
 			URITemplateAction(
 			label='VIDEO1',
-			uri='影片網址'
+			uri='https://i.imgur.com/8sNfqJl.jpg'
 			),
 			PostbackTemplateAction(
 			label='postback',
