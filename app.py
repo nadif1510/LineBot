@@ -81,7 +81,7 @@ def handle_message(event):
 		template=ButtonsTemplate(
 			title='這是ButtonsTemplate',
 			text='ButtonsTemplate可以傳送text,uri',
-			thumbnail_image_url='顯示在開頭的大圖片網址',
+			thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
 			actions=[
 				MessageTemplateAction(
 					label='ButtonsTemplate',
@@ -89,7 +89,7 @@ def handle_message(event):
 				),
 				URITemplateAction(
 					label='VIDEO1',
-					uri='影片網址'
+					uri='https://i.imgur.com/ebLtiKR.jpg'
 				),
 				PostbackTemplateAction(
 					label='postback',
