@@ -95,10 +95,10 @@ def handle_message(event):
 					label='postback',
 					text='postback text',
 					data='postback1'
-                )
-            ]
-        )
-    )
+				)
+			]
+			)
+		)
 		line_bot_api.reply_message(event.reply_token, buttons_template)
 		
 		
