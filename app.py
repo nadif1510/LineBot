@@ -79,27 +79,32 @@ def handle_message(event):
 			buttons_template = TemplateSendMessage(
 			alt_text='Buttons Template',
 			template=ButtonsTemplate(
-			title='這是ButtonsTemplate',
-			text='ButtonsTemplate可以傳送text,uri',
-			thumbnail_image_url='https://i.imgur.com/8sNfqJl.jpg',
-			actions=[
-			MessageTemplateAction(
-			label='ButtonsTemplate',
-			text='Buttons'
-			),
-			URITemplateAction(
-			label='VIDEO1',
-			uri='https://i.imgur.com/8sNfqJl.jpg'
-			),
-			PostbackTemplateAction(
-			label='postback',
-			text='postback text',
-			data='postback1'
-			)
-			]
+				title='這是ButtonsTemplate',
+				text='ButtonsTemplate可以傳送text,uri',
+				thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
+				actions=[
+					MessageTemplateAction(
+						label='ButtonsTemplate',
+						text='ButtonsTemplate'
+					),
+					URITemplateAction(
+						label='VIDEO1',
+						uri='https://i.imgur.com/ebLtiKR.jpg'
+					),
+					PostbackTemplateAction(
+						label='postback',
+						text='postback text',
+						data='postback1'
+					)
+				]
 			)
 		)
-		line_bot_api.reply_message(event.reply_token, buttons_template)
+		line_bot_api.reply_message(event.reply_token, buttons_template)	
+		
+		
+		
+		
+		
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
