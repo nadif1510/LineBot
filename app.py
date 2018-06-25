@@ -100,7 +100,27 @@ def handle_message(event):
 			)
 		)
 		line_bot_api.reply_message(event.reply_token, buttons_template)
-		
+	elif event.message.text == "Confirm template":
+		print("Confirm template")       
+		Confirm_template = TemplateSendMessage(
+		alt_text='目錄 template',
+		template=ConfirmTemplate(
+		title='這是ConfirmTemplate',
+			text='這就是ConfirmTemplate,用於兩種按鈕選擇',
+			actions=[                              
+				PostbackTemplateAction(
+					label='Y',
+					text='Y',
+					data='action=buy&itemid=1'
+				),
+				MessageTemplateAction(
+					label='N',
+					text='N'
+                )
+			]
+			)
+		)
+		line_bot_api.reply_message(event.reply_token,Confirm_template)
 		
 		
 		
