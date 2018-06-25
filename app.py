@@ -75,7 +75,7 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='Tainan', latitude=22.994821, longitude=120.196452))
 	elif event.message.text == "貼圖":
 		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=2))
-	elif event.message.text == "Buttons Template":
+	#elif event.message.text == "Buttons Template":
 			buttons_template = TemplateSendMessage(
 			alt_text='Buttons Template',
 			template=ButtonsTemplate(
