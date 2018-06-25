@@ -47,7 +47,6 @@ def handle_message(event):
 	elif event.message.text=="uat":
 		message = TextSendMessage(text="帳號cmtest001~003\n密碼Heaven@4394")
 		line_bot_api.reply_message(event.reply_token,message)
-	#elif event.message.text=="按鈕":
 		message = TemplateSendMessage(
 			alt_text='Buttons template',
 			template=ButtonsTemplate(
@@ -74,6 +73,8 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token, message)
 	elif event.message.text == "位置":
 		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='Tainan', latitude=22.994821, longitude=120.196452))
+	elif event.message.text == "貼圖":
+		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=2))
 
 import os
 if __name__ == "__main__":
