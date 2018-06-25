@@ -3,7 +3,7 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
-import requests 
+#import requests 
 from bs4 import BeautifulSoup
 #from urllib.request import urlretrieve
 
