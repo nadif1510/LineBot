@@ -1,16 +1,9 @@
 from flask import Flask, request, abort
-
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
-)
-
+from linebot import (LineBotApi, WebhookHandler)
+from linebot.exceptions import (InvalidSignatureError)
+from linebot.models import (MessageEvent, TextMessage, TextSendMessage, ImageSendMessage)
 from linebot.models import *
+
 
 
 app = Flask(__name__)
@@ -44,7 +37,7 @@ def handle_message(event):
 	if event.message.text=="MVP":
 		message = TextSendMessage(text="Durant")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif event.message.text=="杜蘭特昶志":
+	elif event.message.text=="Durant昶志":
 		message = TextSendMessage(text="拜託揪他打球，他很可憐沒球友")
 		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text=="抽":
@@ -55,9 +48,31 @@ def handle_message(event):
 	elif event.message.text=="uat":
 		message = TextSendMessage(text="帳號cmtest001~003\n密碼Heaven@4394")
 		line_bot_api.reply_message(event.reply_token,message)
-
-
-
+	elif event.message.text=="按鈕":
+		message = TemplateSendMessage(
+		alt_text='Buttons template',
+		template=ButtonsTemplate(
+        thumbnail_image_url='http://i.imgur.com/AJKHnvf.jpg',
+        title='Menu',
+        text='Please select',
+        actions=[
+            PostbackTemplateAction(
+                label='postback',
+                text='postback text',
+                data='action=buy&itemid=1'
+            ),
+            MessageTemplateAction(
+                label='message',
+                text='message text'
+            ),
+            URITemplateAction(
+                label='uri',
+                uri='https://tw.yahoo.com/'
+            )
+        ]
+    )
+)
+line_bot_api.reply_message(event.reply_token, message)
 		
 import os
 if __name__ == "__main__":
