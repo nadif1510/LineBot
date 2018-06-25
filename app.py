@@ -75,31 +75,7 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='Tainan', latitude=22.994821, longitude=120.196452))
 	elif event.message.text == "貼圖":
 		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=2))
-	#elif event.message.text == "Buttons Template":
-			buttons_template = TemplateSendMessage(
-			alt_text='Buttons Template',
-			template=ButtonsTemplate(
-				title='這是ButtonsTemplate',
-				text='ButtonsTemplate可以傳送text,uri',
-				thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
-				actions=[
-					MessageTemplateAction(
-						label='ButtonsTemplate',
-						text='ButtonsTemplate'
-					),
-					URITemplateAction(
-						label='VIDEO1',
-						uri='https://i.imgur.com/ebLtiKR.jpg'
-					),
-					PostbackTemplateAction(
-						label='postback',
-						text='postback text',
-						data='postback1'
-					)
-				]
-			)
-		)
-		line_bot_api.reply_message(event.reply_token, buttons_template)	
+
 		
 		
 		
