@@ -51,17 +51,17 @@ def handle_message(event):
 	elif event.message.text=="按鈕":
 		message = TemplateSendMessage(
 		alt_text='Buttons template',
-		template=ButtonsTemplate(
-        thumbnail_image_url='http://i.imgur.com/AJKHnvf.jpg',
-        title='Menu',
-        text='Please select',
-        actions=[
-            PostbackTemplateAction(
+			template=ButtonsTemplate(
+			thumbnail_image_url='http://i.imgur.com/AJKHnvf.jpg',
+			title='Menu',
+			text='Please select',
+			actions=[
+				PostbackTemplateAction(
                 label='postback',
                 text='postback text',
                 data='action=buy&itemid=1'
             ),
-            MessageTemplateAction(
+			MessageTemplateAction(
                 label='message',
                 text='message text'
             ),
@@ -69,10 +69,10 @@ def handle_message(event):
                 label='uri',
                 uri='https://tw.yahoo.com/'
             )
-        ]
-    )
-)
-line_bot_api.reply_message(event.reply_token, message)
+			]
+			)
+		)
+		line_bot_api.reply_message(event.reply_token, message)
 		
 import os
 if __name__ == "__main__":
