@@ -63,8 +63,8 @@ def apple_news2():
 		title = data.find('img')['alt']
 		link =  data['href']
 		link2 = 'https:'+ data.find('img')['data-src']
-		content+='{}\n{}\n{}\n'.format(title,link,link2)
-		#content+='{}\n{}\n'.format(title,link)
+		#content+='{}\n{}\n{}\n'.format(title,link,link2)
+		content+='{}\n{}\n'.format(title,link)
 	return content
 
 def neihu_weather():
