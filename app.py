@@ -32,20 +32,20 @@ def callback():
 
     return 'OK'
 
-#def movie():
-#	target_url = 'https://movies.yahoo.com.tw/'
-#	rs = requests.session()
-#	res = rs.get(target_url, verify=False)
-#	res.encoding = 'utf-8'
-#	soup = BeautifulSoup(res.text, 'html.parser')   
-#	content = ""
-#	for index, data in enumerate(soup.select('div.movielist_info h1 a')):
-#		if index == 20:
-#			return content       
-#		title = data.text
-#		link =  data['href']
-#		content += '{}\n{}\n'.format(title, link)
-#   return content
+def movie():
+	target_url = 'https://movies.yahoo.com.tw/'
+	rs = requests.session()
+	res = rs.get(target_url, verify=False)
+	res.encoding = 'utf-8'
+	soup = BeautifulSoup(res.text, 'html.parser')   
+	content = ""
+	for index, data in enumerate(soup.select('div.movielist_info h1 a')):
+		if index == 20:
+			return content       
+		title = data.text
+		link =  data['href']
+		content += '{}\n{}\n'.format(title, link)
+	return content
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -187,9 +187,9 @@ def handle_message(event):
 		)
 		line_bot_api.reply_message(event.reply_token,Carousel_template)
 		
-	#elif event.message.text == "最新電影":
-	#	a=movie()
-	#	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	elif event.message.text == "最新電影":
+		a=movie()
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 		
 		
 import os
