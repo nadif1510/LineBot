@@ -43,8 +43,9 @@ def movie():
 		if index == 20:
 			return content       
 		title = data.text
-		link =  data['href']
-		content += '{}\n{}\n'.format(title, link)
+		#link =  data['href']
+		#content += '{}\n{}\n'.format(title, link)
+		content += title
 	return content
 
 def apple_news2():
@@ -59,10 +60,9 @@ def apple_news2():
 			return content
 		print(data)  
 		title = data.find('img')['alt']
-		#link =  data['href']
-		#link2 = 'https:'+ data.find('img')['data-src']
-		#content+='{}\n{}\n{}\n'.format(title,link,link2)
-		content+=title
+		link =  data['href']
+		link2 = 'https:'+ data.find('img')['data-src']
+		content+='{}\n{}\n{}\n'.format(title,link,link2)
 	return content
 
 def neihu_weather():
