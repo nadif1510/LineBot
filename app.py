@@ -40,7 +40,7 @@ def movie():
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.movielist_info h1 a')):
-		if index == 10:
+		if index == 30:
 			return content
 		print(data)
 		title = data.text
