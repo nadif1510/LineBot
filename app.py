@@ -4,7 +4,7 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
 import requests 
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 #from urllib.request import urlretrieve
 
 app = Flask(__name__)
@@ -45,7 +45,7 @@ def callback():
 #		title = data.text
 #		link =  data['href']
 #		content += '{}\n{}\n'.format(title, link)
- #   return content
+#   return content
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
