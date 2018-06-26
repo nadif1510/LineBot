@@ -46,7 +46,7 @@ def movie():
 		title = data.text
 		link = data['href']
 		#content+='{}\n{}\n'.format(title,link)
-		content+=title
+		content+=link
 	return content
 
 def apple_news2():
