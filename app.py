@@ -40,7 +40,7 @@ def movie():
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.movielist_info h1 a')):
-		if index == 15:
+		if index ==17 :
 			return content
 		print(data)
 		title = data.text
@@ -63,8 +63,8 @@ def apple_news2():
 		title = data.find('img')['alt']
 		link =  data['href']
 		link2 = 'https:'+ data.find('img')['data-src']
-		#content+='{}\n{}\n{}\n'.format(title,link,link2)
-		content+='{}\n{}\n'.format(title,link)
+		content+='{}\n{}\n{}\n'.format(title,link,link2)
+		#content+='{}\n{}\n'.format(title,link)
 	return content
 
 def neihu_weather():
