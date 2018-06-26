@@ -43,9 +43,9 @@ def movie():
 		if index == 20:
 			return content       
 		title = data.text
-		#link =  data['href']
-		#content += '{}\n{}\n'.format(title, link)
-		content += title
+		link = data['href']
+		content += '{}\n{}\n'.format(title, link)
+		#content += title
 	return content
 
 def apple_news2():
