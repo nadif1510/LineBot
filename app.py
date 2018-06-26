@@ -40,7 +40,7 @@ def movie():
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.movielist_info h1 a')):
-		if index ==17 :
+		if index ==15 :
 			return content
 		print(data)
 		title = data.text
@@ -57,7 +57,7 @@ def apple_news2():
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.item a')):
-		if index ==20:           
+		if index ==15:           
 			return content
 		print(data)  
 		title = data.find('img')['alt']
