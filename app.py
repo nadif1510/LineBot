@@ -44,7 +44,7 @@ def movie():
 			return content       
 		title = data.text
 		link = data['href']
-		content += '{}\n{}\n'.format(title, link)
+		content += '{}\n{}\n'.format(title,link)
 		#content += title
 	return content
 
