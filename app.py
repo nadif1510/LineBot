@@ -47,6 +47,24 @@ def movie():
 		content += '{}\n{}\n'.format(title, link)
 	return content
 
+def apple_news2():
+	target_url = 'https://tw.appledaily.com/new/realtime'
+	rs = requests.session()
+	res = rs.get(target_url, verify=False)
+	res.encoding = 'utf-8'
+	soup = BeautifulSoup(res.text, 'html.parser')   
+	content = ""
+	for index, data in enumerate(soup.select('div.item a')):
+		if index ==10:           
+			return content
+		print(data)  
+		title = data.find('img')['alt']
+		link =  data['href']
+		link2 = 'https:'+ data.find('img')['data-src']
+		content+='{}\n{}\n{}\n'.format(title,link,link2)
+	return content
+
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if event.message.text=="MVP":
@@ -190,7 +208,9 @@ def handle_message(event):
 	elif event.message.text == "最新電影":
 		a=movie()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-		
+	elif event.message.text == "最新新聞":
+		a=apple_news2()
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))	
 		
 import os
 if __name__ == "__main__":
