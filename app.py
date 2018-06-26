@@ -40,13 +40,13 @@ def movie():
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.movielist_info h1 a')):
-		if index == 20:
+		if index == 10:
 			return content
 		print(data)
 		title = data.text
 		link = data['href']
-		#content+='{}\n{}\n'.format(title,link)
-		content+=link
+		content+='{}\n{}\n'.format(title,link)
+		#content+=link
 	return content
 
 def apple_news2():
