@@ -68,7 +68,7 @@ def apple_news2():
 	return content
 
 def neihu_weather():
-	target_url = 'https://www.cwb.gov.tw/m/f/town368/6301000.php'
+	target_url = 'https://www.cwb.gov.tw/m/f/town368/7day/6301000.htm'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
 	res.encoding = 'utf-8'
