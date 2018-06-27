@@ -74,7 +74,7 @@ def neihu_weather():
 	res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
-	for index, data in enumerate(soup.select('div.wob_df.wob_ds div')):
+	for index, data in enumerate(soup.select('div.wob_df div')):
 		if index ==10:           
 			return content
 		print(data)  
