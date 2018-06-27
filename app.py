@@ -74,14 +74,13 @@ def neihu_weather():
 	res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
-	for index, data in enumerate(soup.select('div.item a')):
+	for index, data in enumerate(soup.select('div#7day div.weather-icon img')):
 		if index ==10:           
 			return content
 		print(data)  
-		title = data.find('img')['alt']
-		link =  data['href']
-		link2 = 'https:'+ data.find('img')['data-src']
-		content+='{}\n{}\n{}\n'.format(title,link,link2)
+		title = data['title']
+		link =  data['scr']
+		content+='{}\n{}\n'.format(title,link)
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
@@ -229,7 +228,10 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text == "最新新聞":
 		a=apple_news2()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))	
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	elif event.message.text == "內湖天氣預報":
+		a=neihu_weather()
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))		
 		
 import os
 if __name__ == "__main__":
