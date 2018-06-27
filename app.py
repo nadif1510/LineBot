@@ -74,9 +74,10 @@ def neihu_weather():
 	target_url = 'https://www.google.com.tw/search?ei=zyczW_GCNJOchwOx2p3ABA&q=%E5%85%A7%E6%B9%96%E5%A4%A9%E6%B0%A3%E9%A0%90%E5%A0%B1&oq=%E5%85%A7%E6%B9%96&gs_l=psy-ab.3.1.35i39k1j0i67k1j0i131k1l2j0j0i131k1j0l4.36106.38701.0.42324.7.7.0.0.0.0.41.253.7.7.0....0...1.1j4.64.psy-ab..0.4.151....0.NfT-ObbbmDs'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
-	#res.encoding = 'utf-8'
+	res.encoding = 'utf-8'
 	print('neihu++++++++++++++++++++++++++++++00000000000')
-	soup = BeautifulSoup(res.text, 'html.parser')   
+	soup = BeautifulSoup(res.text, 'html.parser')
+	print(res.text)
 	content = ""
 	print('neihu++++++++++++++++++++++++++++++11111111111')
 	for index, data in enumerate(soup.select('div.wob_df')):
