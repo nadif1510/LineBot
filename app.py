@@ -81,7 +81,7 @@ def neihu_weather():
 		title = data.find('img')['alt']
 		#link = data['src']
 		#content+='{}\n{}\n'.format(title,link)
-		content+=total
+		content+=tital
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
