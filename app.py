@@ -1,3 +1,5 @@
+# coding=utf8
+
 from flask import Flask, request, abort
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
@@ -53,7 +55,7 @@ def apple_news2():
 	target_url = 'https://tw.appledaily.com/new/realtime'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
-	#res.encoding = 'utf-8'
+	res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.item a')):
@@ -71,20 +73,17 @@ def neihu_weather():
 	target_url = 'https://www.google.com.tw/search?ei=zyczW_GCNJOchwOx2p3ABA&q=%E5%85%A7%E6%B9%96%E5%A4%A9%E6%B0%A3%E9%A0%90%E5%A0%B1&oq=%E5%85%A7%E6%B9%96&gs_l=psy-ab.3.1.35i39k1j0i67k1j0i131k1l2j0j0i131k1j0l4.36106.38701.0.42324.7.7.0.0.0.0.41.253.7.7.0....0...1.1j4.64.psy-ab..0.4.151....0.NfT-ObbbmDs'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
-	res.encoding = 'utf-8'
+	#res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
-	
 	for index, data in enumerate(soup.select('div.wob_df')):
-		if index ==1:           
-			return str(content)
-		print(data)  
+		print('index: '+index)
+		if index == 8:           
+			return content
 		title = data.find('img')['alt']
-		#title = data.text
-		#link = data['src']
-		#content+='{}\n{}\n'.format(title,link)
-		content+=title
-	return str(content)
+		link = 'https:' + data.find('img')['src']
+		content += '{}\n{}\n'.format(title, link)
+	return content
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
