@@ -77,14 +77,14 @@ def neihu_weather():
 	
 	for index, data in enumerate(soup.select('div.wob_df')):
 		if index ==1:           
-			return content
+			return str(content)
 		print(data)  
 		title = data.find('img')['alt']
 		#title = data.text
 		#link = data['src']
 		#content+='{}\n{}\n'.format(title,link)
 		content+=title
-	return content
+	return str(content)
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
