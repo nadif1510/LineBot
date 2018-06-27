@@ -82,7 +82,7 @@ def neihu_weather():
 		#title = data.text
 		#link = data['src']
 		#content+='{}\n{}\n'.format(title,link)
-		content+=title
+		content+=data
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
