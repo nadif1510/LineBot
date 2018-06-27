@@ -74,11 +74,11 @@ def neihu_weather():
 	res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
-	for index, data in enumerate(soup.select('div[style="display:inline-block"]')):
+	for index, data in enumerate(soup.select('img[style="margin:1px 4px 0]')):
 		if index ==10:           
 			return content
 		print(data)  
-		title = data.find('img')['alt']
+		title = data.find['alt']
 		#title = data.text
 		#link = data['src']
 		#content+='{}\n{}\n'.format(title,link)
