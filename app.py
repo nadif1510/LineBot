@@ -75,14 +75,13 @@ def neihu_weather():
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.rc h3 a')):
-		if index ==10:           
+		if index ==5:           
 			return content
 		print(data)  
-		title = data.text
-		#title = data.text
-		#link = data['src']
+		#title = data.find('img')['alt']
+		link =  data['href']
 		#content+='{}\n{}\n'.format(title,link)
-		content+=title
+		content+=link
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
