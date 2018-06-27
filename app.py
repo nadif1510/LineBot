@@ -78,10 +78,10 @@ def neihu_weather():
 		if index ==10:           
 			return content
 		print(data)  
-		title = data['title']
-		#link =  data['scr']
+		#title = data['title']
+		link = data['scr']
 		#content+='{}\n{}\n'.format(title,link)
-		content+=title
+		content+=link
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
