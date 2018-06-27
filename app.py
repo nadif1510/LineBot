@@ -53,7 +53,7 @@ def apple_news2():
 	target_url = 'https://tw.appledaily.com/new/realtime'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
-	res.encoding = 'utf-8'
+	#res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.item a')):
