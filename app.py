@@ -74,13 +74,15 @@ def neihu_weather():
 	res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
-	for index, data in enumerate(soup.select('div.rc h3.r a')):
-		if index ==5 :
+	for index, data in enumerate(soup.select('div.wob_df')):
+		if index ==10:           
 			return content
-		print(data)
-		title = data.text
-		link = data['href']
-		content+='{}\n{}\n'.format(title,link)
+		print(data)  
+		title = data.find('img')['alt']
+		#title = data.text
+		#link = data['src']
+		#content+='{}\n{}\n'.format(title,link)
+		content+=title
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
@@ -223,13 +225,13 @@ def handle_message(event):
 		)
 		line_bot_api.reply_message(event.reply_token,Carousel_template)
 		
-	elif event.message.text == "電影":
+	elif event.message.text == "最新電影":
 		a=movie()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	elif event.message.text == "新聞":
+	elif event.message.text == "最新新聞":
 		a=apple_news2()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	elif event.message.text == "天氣":
+	elif event.message.text == "內湖天氣預報":
 		a=neihu_weather()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))		
 		
