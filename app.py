@@ -75,7 +75,7 @@ def neihu_weather():
 	soup = BeautifulSoup(res.text, 'html.parser')   
 	content = ""
 	for index, data in enumerate(soup.select('div.rc h3.r a')):
-		if index ==15 :
+		if index ==5 :
 			return content
 		print(data)
 		title = data.text
@@ -223,13 +223,13 @@ def handle_message(event):
 		)
 		line_bot_api.reply_message(event.reply_token,Carousel_template)
 		
-	elif event.message.text == "最新電影":
+	elif event.message.text == "電影":
 		a=movie()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	elif event.message.text == "最新新聞":
+	elif event.message.text == "新聞":
 		a=apple_news2()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	elif event.message.text == "內湖天氣預報":
+	elif event.message.text == "天氣":
 		a=neihu_weather()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))		
 		
