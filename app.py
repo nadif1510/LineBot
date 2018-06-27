@@ -79,7 +79,7 @@ def neihu_weather():
 			return content
 		print(data)  
 		#title = data['title']
-		link = data['scr']
+		link = data['src']
 		#content+='{}\n{}\n'.format(title,link)
 		content+=link
 	return content
