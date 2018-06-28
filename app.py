@@ -81,6 +81,7 @@ def neihu_weather():
 		print('index: '+index)
 		if index == 8:           
 			return content
+		print(data)
 		title = data.find('img')['alt']
 		if title !="":
 			link = 'https:' + data.find('img')['src']
