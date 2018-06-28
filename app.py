@@ -77,9 +77,9 @@ def neihu_weather():
 	soup = BeautifulSoup(res.text, 'html.parser')
 	print(res.text)
 	content = ""
-	for data in enumerate(soup.select('td')):
+	for data in enumerate(soup.select('td img')):
 		print(data)
-		title = data.find('img')['alt']
+		title = data.find['alt']
 		#if title !="":
 		#	link = 'https:' + data.find('img')['src']
 		#content+='{}\n{}\n'.format(title,link)
