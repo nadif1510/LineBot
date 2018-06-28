@@ -84,7 +84,8 @@ def neihu_weather():
 		title = data.find('img')['alt']
 		if title !="":
 			link = 'https:' + data.find('img')['src']
-		content+='{}\n{}\n'.format(title,link)
+		#content+='{}\n{}\n'.format(title,link)
+		content+=title
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
