@@ -4,10 +4,12 @@ from flask import Flask, request, abort
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
-
+from lxml import etree
 import requests 
 from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
+
+
 
 app = Flask(__name__)
 
@@ -69,7 +71,7 @@ def apple_news2():
 		content+='{}\n{}\n'.format(title,link)
 	return content
 
-def neihu_weather():
+
 	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
@@ -85,7 +87,18 @@ def neihu_weather():
 		#content+='{}\n{}\n'.format(title,link)
 		content+=title
 	return content
-
+def neihu_weather():
+	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+	rs = requests.session()
+	res = rs.get(target_url, verify=False)
+	res.encoding = 'utf-8'
+	selector = etree.HTML(res.text)
+	content = ""
+	links = selector.xpath('//img/@title')
+	for link in links:
+		content+=link
+	return content
+	
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if event.message.text=="MVP":
