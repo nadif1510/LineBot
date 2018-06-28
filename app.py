@@ -95,11 +95,12 @@ def neihu_weather():
 	content = ""
 	title = selector.xpath('//img/@title')
 	link = selector.xpath('//img[@title]/@src')
-	day = selector.xpath('//img[@title]/@src')
+	day = selector.xpath('//tr[last()-11]/td')
+	night = selector.xpath('//tr[last()-10]/td')
 	for i in range(len(link)):
 		link[i] = 'https://www.cwb.gov.tw'+link[i]
 	for i in range(len(title)):
-		content+='{}\n{}\n'.format(title[i],link[i])
+		content+='{}\n{}\n{}\n'.format(night[i].text,title[i],link[i])
 	return content
 	
 @handler.add(MessageEvent, message=TextMessage)
