@@ -77,7 +77,9 @@ def neihu_weather():
 	soup = BeautifulSoup(res.text, 'html.parser')
 	print(res.text)
 	content = ""
+	print("+++++++++++++++++++++++++++++++++")
 	for index, data in enumerate(soup.select('td')):
+		print("+++++++++++++++++++++++++++++++++11111111111111111111111111111111111")
 		print('index: '+index)
 		if index == 8:           
 			return content
