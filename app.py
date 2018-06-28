@@ -70,20 +70,21 @@ def apple_news2():
 	return content
 
 def neihu_weather():
-	target_url = 'https://www.google.com.tw/search?ei=zyczW_GCNJOchwOx2p3ABA&q=%E5%85%A7%E6%B9%96%E5%A4%A9%E6%B0%A3%E9%A0%90%E5%A0%B1&oq=%E5%85%A7%E6%B9%96&gs_l=psy-ab.3.1.35i39k1j0i67k1j0i131k1l2j0j0i131k1j0l4.36106.38701.0.42324.7.7.0.0.0.0.41.253.7.7.0....0...1.1j4.64.psy-ab..0.4.151....0.NfT-ObbbmDs'
+	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
 	res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')
 	print(res.text)
 	content = ""
-	for index, data in enumerate(soup.select('div.wob_df')):
+	for index, data in enumerate(soup.select('td')):
 		print('index: '+index)
 		if index == 8:           
 			return content
-		#title = data.find('img')['alt']
-		link = 'https:' + data.find('img')['src']
-		content += link
+		title = data.find('img')['alt']
+		if title !="":
+			link = 'https:' + data.find('img')['src']
+		content+='{}\n{}\n'.format(title,link)
 	return content
 
 @handler.add(MessageEvent, message=TextMessage)
