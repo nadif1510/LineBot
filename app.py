@@ -71,7 +71,6 @@ def apple_news2():
 		content+='{}\n{}\n'.format(title,link)
 	return content
 
-
 	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 	rs = requests.session()
 	res = rs.get(target_url, verify=False)
@@ -94,9 +93,13 @@ def neihu_weather():
 	res.encoding = 'utf-8'
 	selector = etree.HTML(res.text)
 	content = ""
-	links = selector.xpath('//img/@title')
-	for link in links:
-		content+=link
+	title = selector.xpath('//img/@title')
+	link = selector.xpath('//img[@title]/@src')
+	day = selector.xpath('//img[@title]/@src')
+	for i in range(len(link)):
+		link[i] = 'https://www.cwb.gov.tw'+link[i]
+	for i in range(len(title)):
+		content+='{}\n{}\n'.format(title[i],link[i])
 	return content
 	
 @handler.add(MessageEvent, message=TextMessage)
