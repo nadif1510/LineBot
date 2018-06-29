@@ -289,30 +289,7 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text == "天氣":
 		title1,link1,day1,night1=neihu_weather2()
-		buttons_template = TemplateSendMessage(
-		alt_text='Buttons Template',
-		template=ButtonsTemplate(
-			title=title1[0],
-			text='天氣預測',
-			thumbnail_image_url=link1,
-			actions=[
-				MessageTemplateAction(
-					label='ButtonsTemplate',
-					text='抽'
-				),
-				URITemplateAction(
-					label='VIDEO1',
-					uri='https://i.imgur.com/ebLtiKR.jpg'
-				),
-				PostbackTemplateAction(
-					label='postback',
-					text='postback text',
-					data='postback1'
-				)
-			]
-			)
-		)
-		line_bot_api.reply_message(event.reply_token, buttons_template)		
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=title1[0]))	
 	
 import os
 if __name__ == "__main__":
