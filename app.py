@@ -99,7 +99,6 @@ def neihu_weather():
 	night = selector.xpath('//td[text()="時間"]/../*[text()!="時間"]//text()')
 	day1=""
 	day2=""
-	x=1;
 	for i in range(0,14,2):
 		day1+=" "+day[i]
 		day1=day1.split()
