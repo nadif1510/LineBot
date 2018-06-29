@@ -98,7 +98,7 @@ def neihu_weather():
 	day = selector.xpath('//img[@title]/@src')
 	for i in range(len(link)):
 		link[i] = 'https://www.cwb.gov.tw'+link[i]
-	for i in range(len(title)):
+	for i in range(14):
 		content+='{}\n{}\n'.format(title[i],link[i])
 	return content
 	
