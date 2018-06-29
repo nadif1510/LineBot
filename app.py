@@ -101,7 +101,7 @@ def neihu_weather():
 		link[i] = 'https://www.cwb.gov.tw'+link[i]
 	for i in range(14):
 		content='{},{},{},{}\n'.format(day[i],night[i],title[i],link[i])
-	return content
+		return content
 	
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
