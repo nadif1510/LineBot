@@ -112,7 +112,6 @@ def neihu_weather():
 		link[i] = 'https://www.cwb.gov.tw'+link[i]
 	for i in range(14):
 		content+='{},{},{},{}\n'.format(day[i],night[i],title[i],link[i])
-		#x=x+1
 	return content
 def neihu_weather2():
 	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
@@ -287,30 +286,9 @@ def handle_message(event):
 		a=apple_news2()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text == "內湖天氣":
-		print('內湖天氣預報')
 		a=neihu_weather()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))		
-	elif event.message.text == "天氣":
-		title1,link1,day1,night1=neihu_weather()
-		buttons_template = TemplateSendMessage(
-		alt_text='Buttons Template',
-		template=ButtonsTemplate(
-			title=title1[0],
-			text='內湖天氣',
-			thumbnail_image_url=link1[0],
-			actions=[
-				MessageTemplateAction(
-					label='ButtonsTemplate',
-					text='抽'
-				),
-				URITemplateAction(
-					label='天氣網址',
-					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
-				),
-			]
-			)
-		)
-		line_bot_api.reply_message(event.reply_token, buttons_template)	
+	
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
