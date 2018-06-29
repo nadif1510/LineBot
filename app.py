@@ -112,7 +112,32 @@ def neihu_weather():
 	for i in range(14):
 		content+='{},{},{},{}\n'.format(day[i],night[i],title[i],link[i])
 	return content
-	
+def neihu_weather2():
+	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+	rs = requests.session()
+	res = rs.get(target_url, verify=False)
+	res.encoding = 'utf-8'
+	selector = etree.HTML(res.text)
+	content = ""
+	title = selector.xpath('//img/@title')
+	link = selector.xpath('//img[@title]/@src')
+	day = selector.xpath('//td[text()="日期"]/../td[@colspan]//text()')
+	night = selector.xpath('//td[text()="時間"]/../*[text()!="時間"]//text()')
+	day1=""
+	day2=""
+	for i in range(0,14,2):
+		day1+=" "+day[i]
+	day1=day1.split()
+	for i in range(1,14,2):
+		day2+=" "+day[i]
+	day2=day2.split()
+	for i in range(7):
+		day1[i]=day1[i]+day2[i]
+	for i in range(len(link)):
+		link[i] = 'https://www.cwb.gov.tw'+link[i]
+	for i in range(14):
+		content+='{},{},{},{}\n'.format(day[i],night[i],title[i],link[i])
+	return title,link,day1,night	
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if event.message.text=="MVP":
@@ -261,7 +286,33 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text == "內湖天氣":
 		a=neihu_weather()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))		
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	elif event.message.text == "天氣":
+		title1,link1,day1,night1=neihu_weather2()
+		buttons_template = TemplateSendMessage(
+		alt_text='Buttons Template',
+		template=ButtonsTemplate(
+			title=title1[0],
+			text='天氣預測',
+			thumbnail_image_url=link1,
+			actions=[
+				MessageTemplateAction(
+					label='ButtonsTemplate',
+					text='抽'
+				),
+				URITemplateAction(
+					label='VIDEO1',
+					uri='https://i.imgur.com/ebLtiKR.jpg'
+				),
+				PostbackTemplateAction(
+					label='postback',
+					text='postback text',
+					data='postback1'
+				)
+			]
+			)
+		)
+		line_bot_api.reply_message(event.reply_token, buttons_template)		
 	
 import os
 if __name__ == "__main__":
