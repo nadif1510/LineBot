@@ -101,10 +101,10 @@ def neihu_weather():
 	day2=""
 	for i in range(0,14,2):
 		day1+=" "+day[i]
-		day1=day1.split()
+	day1=day1.split()
 	for i in range(1,14,2):
 		day2+=" "+day[i]
-		day2=day2.split()
+	day2=day2.split()
 	for i in range(7):
 		day1[i]=day1[i]+day2[i]
 	for i in range(len(link)):
