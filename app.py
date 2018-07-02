@@ -294,7 +294,7 @@ def handle_message(event):
 		template=ButtonsTemplate(
 			title=title1[0],
 			text='ButtonsTemplate可以傳送text,uri',
-			thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
+			thumbnail_image_url='link1[0]',
 			actions=[
 				MessageTemplateAction(
 					label='ButtonsTemplate',
