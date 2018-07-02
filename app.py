@@ -247,6 +247,61 @@ def handle_message(event):
 				)
 				]
             )
+			CarouselColumn(
+				title=day1[2],
+				text='白天:'+title1[4]+'\n晚上:'+title1[5],
+				thumbnail_image_url=link1[4],
+				actions=[
+					URITemplateAction(
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+				)
+				]
+            )
+			CarouselColumn(
+				title=day1[3],
+				text='白天:'+title1[6]+'\n晚上:'+title1[7],
+				thumbnail_image_url=link1[6],
+				actions=[
+					URITemplateAction(
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+				)
+				]
+            )
+			CarouselColumn(
+				title=day1[4],
+				text='白天:'+title1[8]+'\n晚上:'+title1[9],
+				thumbnail_image_url=link1[8],
+				actions=[
+					URITemplateAction(
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+				)
+				]
+            )
+			CarouselColumn(
+				title=day1[5],
+				text='白天:'+title1[10]+'\n晚上:'+title1[11],
+				thumbnail_image_url=link1[10],
+				actions=[
+					URITemplateAction(
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+				)
+				]
+            )
+			CarouselColumn(
+				title=day1[6],
+				text='白天:'+title1[12]+'\n晚上:'+title1[13],
+				thumbnail_image_url=link1[12],
+				actions=[
+					URITemplateAction(
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+				)
+				]
+            )
 		]
 		)
 		)
@@ -261,24 +316,7 @@ def handle_message(event):
 	elif event.message.text == "內湖天氣":
 		a=neihu_weather()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	elif event.message.text == "天氣":
-		title1,link1,day1,night1=neihu_weather2()
-		buttons_template = TemplateSendMessage(
-		alt_text='Buttons Template',
-		template=ButtonsTemplate(
-			title=day1[0],
-			text='白天:'+title1[0]+'\n晚上:'+title1[1],
-			thumbnail_image_url=link1[0],
-			actions=[
-				URITemplateAction(
-					label='來源網站',
-					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
-				)
 
-			]
-			)
-		)
-		line_bot_api.reply_message(event.reply_token, buttons_template)
 	
 import os
 if __name__ == "__main__":
