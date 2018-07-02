@@ -292,23 +292,31 @@ def handle_message(event):
 		buttons_template = TemplateSendMessage(
 		alt_text='Buttons Template',
 		template=ButtonsTemplate(
-			title=title1[0],
+			title=day1[0],
 			text='ButtonsTemplate可以傳送text,uri',
 			thumbnail_image_url=link1[0],
 			actions=[
 				MessageTemplateAction(
-					label='ButtonsTemplate',
-					text=''
+					label='白天',
+					text='不要點我'
+				),
+				MessageTemplateAction(
+					label=title1[0],
+					text='不要點我'
+				),
+				MessageTemplateAction(
+					label='晚上',
+					text='不要點我'
+				),
+				MessageTemplateAction(
+					label=title1[1],
+					text='不要點我'
 				),
 				URITemplateAction(
-					label='VIDEO1',
-					uri='https://i.imgur.com/ebLtiKR.jpg'
-				),
-				PostbackTemplateAction(
-					label='postback',
-					text='postback text',
-					data='postback1'
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 				)
+
 			]
 			)
 		)
