@@ -195,6 +195,14 @@ def handle_message(event):
 					label='ButtonsTemplate',
 					text='抽'
 				),
+				MessageTemplateAction(
+					label='ButtonsTemplate',
+					text='抽'
+				),
+				MessageTemplateAction(
+					label='ButtonsTemplate',
+					text='抽'
+				),
 				URITemplateAction(
 					label='VIDEO1',
 					uri='https://i.imgur.com/ebLtiKR.jpg'
@@ -293,7 +301,7 @@ def handle_message(event):
 		alt_text='Buttons Template',
 		template=ButtonsTemplate(
 			title=day1[0],
-			text='ButtonsTemplate可以傳送text,uri',
+			text='當周天氣預報',
 			thumbnail_image_url=link1[0],
 			actions=[
 				MessageTemplateAction(
