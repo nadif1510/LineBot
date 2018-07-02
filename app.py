@@ -297,8 +297,7 @@ def handle_message(event):
 			thumbnail_image_url=link1[0],
 			actions=[
 				MessageTemplateAction(
-					label='ButtonsTemplate',
-					text='抽'
+					label='ButtonsTemplate'
 				),
 				URITemplateAction(
 					label='VIDEO1',
