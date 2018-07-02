@@ -220,51 +220,34 @@ def handle_message(event):
 		)
 		line_bot_api.reply_message(event.reply_token,Confirm_template)
 	elif event.message.text == "Carousel template":
+		title1,link1,day1,night1=neihu_weather2()
 		Carousel_template = TemplateSendMessage(
 		alt_text='Carousel template',
 		template=CarouselTemplate(
 		columns=[
 			CarouselColumn(
-				thumbnail_image_url='https://i.imgur.com/8sNfqJl.jpg',
-				title='this is menu1',
-				text='description1',
+				title=day1[0],
+				text='白天:'+title1[0]+'\n晚上:'+title1[1],
+				thumbnail_image_url=link1[0],
 				actions=[
-					PostbackTemplateAction(
-						label='postback1',
-						text='postback text1',
-						data='action=buy&itemid=1'
-					),
-					MessageTemplateAction(
-						label='message1',
-						text='message text1'
-					),
 					URITemplateAction(
-						label='uri1',
-						uri='http://example.com/1'
-					)
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+				)
 				]
 			),
 			CarouselColumn(
-				thumbnail_image_url='https://i.imgur.com/8sNfqJl.jpg',
-				title='this is menu2',
-				text='description2',
+				title=day1[1],
+				text='白天:'+title1[2]+'\n晚上:'+title1[3],
+				thumbnail_image_url=link1[2],
 				actions=[
-					PostbackTemplateAction(
-						label='postback2',
-						text='postback text2',
-						data='action=buy&itemid=2'
-					),
-					MessageTemplateAction(
-						label='message2',
-						text='message text2'
-					),
 					URITemplateAction(
-						label='連結2',
-						uri='http://example.com/2'
-					)
+					label='來源網站',
+					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
+				)
 				]
             )
-        ]
+		]
 		)
 		)
 		line_bot_api.reply_message(event.reply_token,Carousel_template)
