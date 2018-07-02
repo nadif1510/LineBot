@@ -298,7 +298,7 @@ def handle_message(event):
 			actions=[
 				MessageTemplateAction(
 					label='ButtonsTemplate',
-					text='抽'
+					text=''
 				),
 				URITemplateAction(
 					label='VIDEO1',
