@@ -284,25 +284,9 @@ def handle_message(event):
 		alt_text='Buttons Template',
 		template=ButtonsTemplate(
 			title=day1[0],
-			text='當周天氣預報',
+			text='當周天氣預報'+day1[0],
 			thumbnail_image_url=link1[0],
 			actions=[
-				MessageTemplateAction(
-					label='白天',
-					text='不要點我'
-				),
-				MessageTemplateAction(
-					label=title1[0],
-					text='不要點我'
-				),
-				MessageTemplateAction(
-					label='晚上',
-					text='不要點我'
-				),
-				MessageTemplateAction(
-					label=title1[1],
-					text='不要點我'
-				),
 				URITemplateAction(
 					label='來源網站',
 					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
