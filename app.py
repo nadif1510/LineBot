@@ -195,11 +195,11 @@ def handle_message(event):
 					label='ButtonsTemplate',
 					text='抽'
 				),
-				MessageTemplateAction(
+				MessageTemplateAction1(
 					label='ButtonsTemplate',
 					text='抽'
 				),
-				MessageTemplateAction(
+				MessageTemplateAction2(
 					label='ButtonsTemplate',
 					text='抽'
 				),
