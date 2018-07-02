@@ -289,6 +289,7 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text == "天氣":
 		title1,link1,day1,night1=neihu_weather2()
+		title1='123'
 		buttons_template = TemplateSendMessage(
 		alt_text='Buttons Template',
 		template=ButtonsTemplate(
