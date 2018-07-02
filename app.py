@@ -284,7 +284,7 @@ def handle_message(event):
 		alt_text='Buttons Template',
 		template=ButtonsTemplate(
 			title=day1[0],
-			text='當周天氣預報'+day1[0],
+			text='白天:'+title[1]+'\n晚上:'+title1[1],
 			thumbnail_image_url=link1[0],
 			actions=[
 				URITemplateAction(
