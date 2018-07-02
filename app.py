@@ -188,29 +188,12 @@ def handle_message(event):
 		alt_text='Buttons Template',
 		template=ButtonsTemplate(
 			title='這是ButtonsTemplate',
-			text='ButtonsTemplate可以傳送text,uri',
+			text='ButtonsTemplate可以傳送text,uri\n sjoifgjf',
 			thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
 			actions=[
-				MessageTemplateAction(
-					label='ButtonsTemplate',
-					text='抽'
-				),
-				MessageTemplateAction1(
-					label='ButtonsTemplate',
-					text='抽'
-				),
-				MessageTemplateAction2(
-					label='ButtonsTemplate',
-					text='抽'
-				),
 				URITemplateAction(
 					label='VIDEO1',
 					uri='https://i.imgur.com/ebLtiKR.jpg'
-				),
-				PostbackTemplateAction(
-					label='postback',
-					text='postback text',
-					data='postback1'
 				)
 			]
 			)
