@@ -219,7 +219,7 @@ def handle_message(event):
 			)
 		)
 		line_bot_api.reply_message(event.reply_token,Confirm_template)
-	elif event.message.text == "Carousel template":
+	elif event.message.text == "天氣":
 		title1,link1,day1,night1=neihu_weather2()
 		Carousel_template = TemplateSendMessage(
 		alt_text='Carousel template',
@@ -246,7 +246,7 @@ def handle_message(event):
 					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 				)
 				]
-            )
+            ),
 			CarouselColumn(
 				title=day1[2],
 				text='白天:'+title1[4]+'\n晚上:'+title1[5],
@@ -257,7 +257,7 @@ def handle_message(event):
 					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 				)
 				]
-            )
+            ),
 			CarouselColumn(
 				title=day1[3],
 				text='白天:'+title1[6]+'\n晚上:'+title1[7],
@@ -268,7 +268,7 @@ def handle_message(event):
 					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 				)
 				]
-            )
+            ),
 			CarouselColumn(
 				title=day1[4],
 				text='白天:'+title1[8]+'\n晚上:'+title1[9],
@@ -279,7 +279,7 @@ def handle_message(event):
 					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 				)
 				]
-            )
+            ),
 			CarouselColumn(
 				title=day1[5],
 				text='白天:'+title1[10]+'\n晚上:'+title1[11],
@@ -290,7 +290,7 @@ def handle_message(event):
 					uri='https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 				)
 				]
-            )
+            ),
 			CarouselColumn(
 				title=day1[6],
 				text='白天:'+title1[12]+'\n晚上:'+title1[13],
