@@ -114,7 +114,7 @@ def neihu_weather():
 	return title,link,day1,night	
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-	if event.message.text=="MVP":
+	if event.message.text.find("MVP"):
 		message = TextSendMessage(text="Durant")
 		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text=="@Durant昶志":
