@@ -117,7 +117,7 @@ def handle_message(event):
 	if "MVP" in event.message.text:
 		message = TextSendMessage(text="Durant")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif event.message.text.find("@Durant昶志"):
+	elif "@Durant昶志" in event.message.text:
 		message = TextSendMessage(text="拜託揪他打球，他很可憐沒球友")
 		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text=="抽":
