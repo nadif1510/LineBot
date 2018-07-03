@@ -153,7 +153,7 @@ def handle_message(event):
 		)		
 		line_bot_api.reply_message(event.reply_token, message)
 	elif event.message.text == "位置":
-		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='Tainan', latitude=22.994821, longitude=120.196452))
+		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='台北市信義區菸廠路', latitude=25.044545, longitude=121.561457))
 	elif "讚" in event.message.text :
 		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=13))
 	
