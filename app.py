@@ -118,7 +118,7 @@ def handle_message(event):
 		message = TextSendMessage(text="Durant")
 		line_bot_api.reply_message(event.reply_token,message)
 	elif "@Durant昶志" in event.message.text or "打球" in event.message.text:
-		message = TextSendMessage(text="拜託揪他打球，他很可憐沒球友還有不要一直叫他請雞排")
+		message = TextSendMessage(text="拜託揪他打球，他很可憐沒球友，然後還有不要一直叫他請雞排，他很窮。")
 		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text=="抽":
 		message = ImageSendMessage(
@@ -154,8 +154,8 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token, message)
 	elif event.message.text == "位置":
 		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='Tainan', latitude=22.994821, longitude=120.196452))
-	elif event.message.text == "貼圖":
-		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=2))
+	elif "讚" in event.message.text :
+		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=13))
 	
 	elif event.message.text == "Buttons Template":
 		buttons_template = TemplateSendMessage(
