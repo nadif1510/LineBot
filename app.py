@@ -117,8 +117,8 @@ def handle_message(event):
 	if "MVP" in event.message.text:
 		message = TextSendMessage(text="Durant")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif "@Durant昶志" in event.message.text:
-		message = TextSendMessage(text="拜託揪他打球，他很可憐沒球友")
+	elif "@Durant昶志" in event.message.text or "打球" in event.message.text:
+		message = TextSendMessage(text="拜託揪他打球，他很可憐沒球友還有不要一直叫他請雞排")
 		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text=="抽":
 		message = ImageSendMessage(
