@@ -156,26 +156,6 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='台北市信義區菸廠路', latitude=25.044545, longitude=121.561457))
 	elif "讚" in event.message.text :
 		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=13))
-	
-	elif event.message.text == "說明":
-		buttons_template = TemplateSendMessage(
-		alt_text='Buttons Template',
-		template=ButtonsTemplate(
-			title='這是ButtonsTemplate',
-			text='ButtonsTemplate可以傳送text,uri\n sjoifgjf',
-			thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
-			actions=[
-					MessageTemplateAction(
-					label='ButtonsTemplate',
-					text='ButtonsTemplate'
-					URITemplateAction(
-					label='NBA網站',
-					uri='https://nba.udn.com/nba/news/'
-					)
-					)
-				]
-		)
-		line_bot_api.reply_message(event.reply_token, buttons_template)
 	elif event.message.text == "Confirm template":
 		Confirm_template = TemplateSendMessage(
 		alt_text='目錄 template',
