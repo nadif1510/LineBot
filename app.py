@@ -157,7 +157,7 @@ def handle_message(event):
 	elif "讚" in event.message.text :
 		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=13))
 	
-	elif event.message.text == "Buttons Template":
+	elif event.message.text == "說明":
 		buttons_template = TemplateSendMessage(
 		alt_text='Buttons Template',
 		template=ButtonsTemplate(
@@ -165,9 +165,12 @@ def handle_message(event):
 			text='ButtonsTemplate可以傳送text,uri\n sjoifgjf',
 			thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
 			actions=[
+					MessageTemplateAction(
+                    label='ButtonsTemplate',
+                    text='ButtonsTemplate'
 				URITemplateAction(
-					label='VIDEO1',
-					uri='https://i.imgur.com/ebLtiKR.jpg'
+					label='NBA網站',
+					uri='https://nba.udn.com/nba/news/'
 				)
 			]
 			)
@@ -279,18 +282,25 @@ def handle_message(event):
 		]
 		)
 		)
-		line_bot_api.reply_message(event.reply_token,Carousel_template)
-		
-	elif event.message.text == "最新電影":
+		line_bot_api.reply_message(event.reply_token,Carousel_template)	
+	elif event.message.text == "電影":
 		a=movie()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	elif event.message.text == "最新新聞":
+	elif event.message.text == "新聞":
 		a=apple_news()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	
 		a=neihu_weather()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-
+	elif event.message.text=="你":
+		message = TextSendMessage(text="你他媽的閉嘴")
+		line_bot_api.reply_message(event.reply_token,message)
+	elif event.message.text=="少":
+		message = TextSendMessage(text="少什麼少!!!老子都不老子了")
+		line_bot_api.reply_message(event.reply_token,message)
+	elif event.message.text=="管":
+		message = TextSendMessage(text="管中閔的是你們才少管")
+		line_bot_api.reply_message(event.reply_token,message)
 	
 import os
 if __name__ == "__main__":
