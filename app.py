@@ -292,6 +292,9 @@ def handle_message(event):
 	
 		a=neihu_weather()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	elif event.message.text=="緯創的事":
+		message = TextSendMessage(text="一日緯創人終身嚇死人")
+		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text=="你":
 		message = TextSendMessage(text="你他媽的閉嘴")
 		line_bot_api.reply_message(event.reply_token,message)
