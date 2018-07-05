@@ -166,14 +166,14 @@ def handle_message(event):
 			thumbnail_image_url='https://i.imgur.com/ebLtiKR.jpg',
 			actions=[
 					MessageTemplateAction(
-                    label='ButtonsTemplate',
-                    text='ButtonsTemplate'
-				URITemplateAction(
+					label='ButtonsTemplate',
+					text='ButtonsTemplate'
+					URITemplateAction(
 					label='NBA網站',
 					uri='https://nba.udn.com/nba/news/'
-				)
-			]
-			)
+					)
+					)
+				]
 		)
 		line_bot_api.reply_message(event.reply_token, buttons_template)
 	elif event.message.text == "Confirm template":
