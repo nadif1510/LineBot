@@ -289,12 +289,12 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text == "位置2":
 		imagemap_message = ImagemapSendMessage(
-		base_url=''
+		base_url='https://ithelp.ithome.com.tw/articles/10195640?sc=iThomeR'
 		alt_text='this is an imagemap',
 		base_size=BaseSize(height=520, width=520),
 		actions=[
 			URIImagemapAction(
-			link_uri='',
+			link_uri='https://ithelp.ithome.com.tw/articles/10195640?sc=iThomeR',
 			area=ImagemapArea(x=174, y=65, width=707, height=416)
 			),
 			MessageImagemapAction(
