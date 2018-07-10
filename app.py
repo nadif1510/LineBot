@@ -156,7 +156,7 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,LocationSendMessage(title='my location', address='台北市信義區菸廠路', latitude=25.044545, longitude=121.561457))
 	elif "讚" in event.message.text :
 		line_bot_api.reply_message(event.reply_token,StickerSendMessage(package_id=1, sticker_id=13))
-	elif event.message.text == "Confirm template":
+	elif event.message.text == "按鈕":
 		Confirm_template = TemplateSendMessage(
 		alt_text='目錄 template',
 		template=ConfirmTemplate(
@@ -164,7 +164,7 @@ def handle_message(event):
 			text='這就是ConfirmTemplate,用於兩種按鈕選擇',
 			actions=[                              
 				PostbackTemplateAction(
-					label='Y',
+					label='Y 這個會回傳一個值在背後',
 					text='Y',
 					data='action=buy&itemid=1'
 				),
@@ -287,7 +287,27 @@ def handle_message(event):
 	elif event.message.text=="你少管":
 		message = TextSendMessage(text="我就住海邊阿不行嗎?")
 		line_bot_api.reply_message(event.reply_token,message)
-	
+	elif event.message.text == "位置2":
+        imagemap_message = ImagemapSendMessage(
+						base_url=''
+						alt_text='this is an imagemap',
+						base_size=BaseSize(height=520, width=520),
+						actions=[
+							URIImagemapAction(
+								link_uri='',
+								area=ImagemapArea(
+									x=174, y=65, width=707, height=416
+								)
+							),
+							MessageImagemapAction(
+								text='hello',
+								area=ImagemapArea(
+									x=520, y=0, width=520, height=520
+								)
+							)
+						]
+					)
+		line_bot_api.reply_message(event.reply_token,imagemap_message)
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
