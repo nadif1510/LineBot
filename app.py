@@ -133,7 +133,7 @@ def neihu_weather():
 #		elif i % 3 == 2:
 #			question.append(sheet[i])
 #	return time,name,question
-	@handler.add(MessageEvent, message=TextMessage)
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if "MVP" in event.message.text:
 		message = TextSendMessage(text="Durant")
