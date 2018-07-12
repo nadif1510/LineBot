@@ -315,6 +315,7 @@ def handle_message(event):
 		line_bot_api.reply_message(event.reply_token,message)
 	elif event.message.text=="sheet":
 		time,name,question=sheet()
+		a=[]
 		for i in range(len(time)):
 			a[i]=time[i]+name[i]+question[i]
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
