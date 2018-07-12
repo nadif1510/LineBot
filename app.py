@@ -287,24 +287,7 @@ def handle_message(event):
 	elif event.message.text=="你少管":
 		message = TextSendMessage(text="我就住海邊阿不行嗎?")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif event.message.text == "位置2":
-		imagemap_message = ImagemapSendMessage(
-		base_url='https://ithelp.ithome.com.tw/articles/10195640?sc=iThomeR'
-		alt_text='this is an imagemap',
-		base_size=BaseSize(height=520, width=520),
-		actions=[
-			URIImagemapAction(
-			link_uri='https://ithelp.ithome.com.tw/articles/10195640?sc=iThomeR',
-			area=ImagemapArea(x=174, y=65, width=707, height=416)
-			),
-			MessageImagemapAction(
-			text='hello',
-			area=ImagemapArea(x=520, y=0, width=520, height=520)
-			)
-		]
-		)
-		
-		line_bot_api.reply_message(event.reply_token,imagemap_message)
+
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
