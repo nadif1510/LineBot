@@ -113,26 +113,25 @@ def neihu_weather():
 		content+='{},{},{},{}\n'.format(day[i],night[i],title[i],link[i])
 	return title,link,day1,night	
 
-#def sheet():
-#	response = requests.get('https://docs.google.com/spreadsheets/d/1JFbvWJU1qVa8ZijU27ZlKgkobDp-meJC9makyVk1Ps8/edit')
-#	assert response.status_code == 200, 'Wrong status code'
+def sheet():
+	response = requests.get('https://docs.google.com/spreadsheets/d/1JFbvWJU1qVa8ZijU27ZlKgkobDp-meJC9makyVk1Ps8/edit')
+	assert response.status_code == 200, 'Wrong status code'
+	soup = BeautifulSoup(response.text, 'html.parser')
+	content = soup.find("meta", {"property":"og:description"})['content']
+	separate = content.split("\n\n")
 
-#	soup = BeautifulSoup(response.text, 'html.parser')
-#	content = soup.find("meta", {"property":"og:description"})['content']
-#	separate = content.split("\n\n")
-#
-#	sheet = re.split(', |\n',separate[1])
-#	time = []
-#	name = []
-#	question = []
-#	for i in range(len(sheet)):
-#		if i % 3 == 0:
-#			time.append(sheet[i].strip())
-#		elif i % 3 == 1:
-#			name.append(sheet[i])
-#		elif i % 3 == 2:
-#			question.append(sheet[i])
-#	return time,name,question
+	sheet = re.split(', |\n',separate[1])
+	time = []
+	name = []
+	question = []
+	for i in range(len(sheet)):
+		if i % 3 == 0:
+			time.append(sheet[i].strip())
+		elif i % 3 == 1:
+			name.append(sheet[i])
+		elif i % 3 == 2:
+			question.append(sheet[i])
+	return time,name,question
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if "MVP" in event.message.text:
@@ -284,7 +283,12 @@ def handle_message(event):
 		)
 		)
 		line_bot_api.reply_message(event.reply_token,Carousel_template)	
-
+	elif event.message.text == "電影":
+		a=movie()
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	elif event.message.text == "新聞":
+		a=apple_news()
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text=="緯創的事":
 		message = TextSendMessage(text="一日緯創人終身嚇死人")
 		line_bot_api.reply_message(event.reply_token,message)
@@ -309,11 +313,11 @@ def handle_message(event):
 	elif event.message.text=="找正妹":
 		message = TextSendMessage(text="帥哥")
 		line_bot_api.reply_message(event.reply_token,message)
-	#elif event.message.text=="sheet":
-	#	time,name,question=sheet()
-	#	for i in range(len(time)):
-	#		a[i]=time[i]+name[i]+question[i]
-	#	line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	elif event.message.text=="sheet":
+		time,name,question=sheet()
+		for i in range(len(time)):
+			a[i]=time[i]+name[i]+question[i]
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
