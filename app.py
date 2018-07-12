@@ -284,12 +284,7 @@ def handle_message(event):
 		)
 		)
 		line_bot_api.reply_message(event.reply_token,Carousel_template)	
-	elif event.message.text == "電影":
-		a=movie()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	elif event.message.text == "新聞":
-		a=apple_news()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+
 	elif event.message.text=="緯創的事":
 		message = TextSendMessage(text="一日緯創人終身嚇死人")
 		line_bot_api.reply_message(event.reply_token,message)
