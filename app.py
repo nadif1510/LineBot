@@ -318,11 +318,7 @@ def handle_message(event):
 	elif event.message.text=="找正妹":
 		message = TextSendMessage(text="帥哥")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif event.message.text=="sheet":
-		time,name,question=sheet()
-		for i in range(len(time)):
-			a[i]=time[i]+name[i]+question[i]
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+	
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
