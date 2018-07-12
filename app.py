@@ -11,7 +11,7 @@ from urllib.request import urlretrieve
 import string
 import re
 import urllib.request
-
+from random import randrange
 
 app = Flask(__name__)
 
@@ -317,8 +317,9 @@ def handle_message(event):
 		time,name,question=sheet()
 		a=[]
 		for i in range(len(time)):
-			a[i]=time[i]+name[i]+question[i]
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+			a.append(time[i]+" "+name[i]+" "+question[i])
+			random_index = randrange(1,len(a))
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a[random_index]))
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
