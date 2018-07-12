@@ -287,7 +287,13 @@ def handle_message(event):
 	elif event.message.text=="你少管":
 		message = TextSendMessage(text="我就住海邊阿不行嗎?")
 		line_bot_api.reply_message(event.reply_token,message)
-
+	elif event.message.text=="廖健凱":
+		message = TextSendMessage(text="他會代替月亮逞罰你?")
+		line_bot_api.reply_message(event.reply_token,message)
+	elif event.message.text=="林昶志":
+		message = TextSendMessage(text="帥哥")
+		line_bot_api.reply_message(event.reply_token,message)
+	
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
