@@ -9,7 +9,10 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
 import string
-
+import re
+import urllib.request
+import json
+import time
 
 app = Flask(__name__)
 
@@ -35,7 +38,6 @@ def callback():
         abort(400)
 
     return 'OK'
-
 def movie():
 	target_url = 'https://movies.yahoo.com.tw/'
 	rs = requests.session()
@@ -52,7 +54,6 @@ def movie():
 		content+='{}\n{}\n'.format(title,link)
 		#content+=link
 	return content
-
 def apple_news():
 	target_url = 'https://tw.appledaily.com/new/realtime'
 	rs = requests.session()
@@ -112,7 +113,31 @@ def neihu_weather():
 	for i in range(14):
 		content+='{},{},{},{}\n'.format(day[i],night[i],title[i],link[i])
 	return title,link,day1,night	
-@handler.add(MessageEvent, message=TextMessage)
+
+def sheet():
+	response = requests.get('https://docs.google.com/spreadsheets/d/1JFbvWJU1qVa8ZijU27ZlKgkobDp-meJC9makyVk1Ps8/edit')
+	assert response.status_code == 200, 'Wrong status code'
+
+	soup = BeautifulSoup(response.text, 'html.parser')
+	content = soup.find("meta", {"property":"og:description"})['content']
+	separate = content.split("\n\n")
+
+	sheet = re.split(', |\n',separate[1])
+	time = []
+	name = []
+	question = []
+	for i in range(len(sheet)):
+		if i % 3 == 0:
+			time.append(sheet[i].strip())
+		elif i % 3 == 1:
+			name.append(sheet[i])
+		elif i % 3 == 2:
+			question.append(sheet[i])
+	return time,name,question
+	
+	
+	
+	@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if "MVP" in event.message.text:
 		message = TextSendMessage(text="Durant")
@@ -269,9 +294,6 @@ def handle_message(event):
 	elif event.message.text == "新聞":
 		a=apple_news()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
-	
-		a=neihu_weather()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text=="緯創的事":
 		message = TextSendMessage(text="一日緯創人終身嚇死人")
 		line_bot_api.reply_message(event.reply_token,message)
@@ -293,7 +315,14 @@ def handle_message(event):
 	elif event.message.text=="林昶志":
 		message = TextSendMessage(text="帥哥")
 		line_bot_api.reply_message(event.reply_token,message)
-	
+	elif event.message.text=="找正妹":
+		message = TextSendMessage(text="帥哥")
+		line_bot_api.reply_message(event.reply_token,message)
+	elif event.message.text=="sheet":
+		time,name,question=sheet()
+		for i in range(len(time)):
+			a[i]=time[i]+name[i]+question[i]
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
