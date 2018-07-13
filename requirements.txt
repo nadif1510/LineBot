@@ -12,3 +12,4 @@ six
 lxml
 oauth2client
 apiclient
+discovery
