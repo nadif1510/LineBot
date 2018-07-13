@@ -11,5 +11,4 @@ requests
 six
 lxml
 oauth2client
-apiclient
-discovery
+--upgrade google-api-python-client
