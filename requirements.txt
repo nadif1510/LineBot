@@ -11,3 +11,4 @@ requests
 six
 lxml
 oauth2client
+apiclient
