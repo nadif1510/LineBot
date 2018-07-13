@@ -318,7 +318,7 @@ def handle_message(event):
 		a=[]
 		for i in range(len(time)):
 			a.append(time[i]+" "+name[i]+" "+question[i])
-			random_index = randrange(1,3)
+		random_index = randrange(1,len(a))
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a[random_index]))
 import os
 if __name__ == "__main__":
