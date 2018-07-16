@@ -11,9 +11,8 @@ from urllib.request import urlretrieve
 import string
 import re
 import urllib.request
-from random import randrange
-import quickstart
-from googleapiclient import discovery
+
+
 
 
 app = Flask(__name__)
@@ -280,19 +279,7 @@ def handle_message(event):
 	elif event.message.text=="林昶志":
 		message = TextSendMessage(text="帥哥")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif event.message.text=="找正妹":
-		message = TextSendMessage(text="帥哥")
-		line_bot_api.reply_message(event.reply_token,message)
-#	elif event.message.text=="sheet":
-#		time,name,question=sheet()
-#		a=[]
-#		for i in range(len(time)):
-#			a.append(time[i]+" "+name[i]+" "+question[i])
-#		random_index = randrange(1,len(a))
-#		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a[random_index]))
-#	elif event.message.text=="表單內容":
-#		a=sheet()
-#		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+
 
 import os
 if __name__ == "__main__":
