@@ -298,9 +298,9 @@ def handle_message(event):
 #			a.append(time[i]+" "+name[i]+" "+question[i])
 #		random_index = randrange(1,len(a))
 #		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a[random_index]))
-	elif event.message.text=="表單內容":
-		a=sheet()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+#	elif event.message.text=="表單內容":
+#		a=sheet()
+#		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 
 import os
 if __name__ == "__main__":
