@@ -101,15 +101,7 @@ def neihu_weather():
 		content+='{},{},{},{}\n'.format(day[i],night[i],title[i],link[i])
 	return title,link,day1,night	
 
-def sheet():
-	credentials = quickstart.creds
-	service = discovery.build('sheets', 'v4', credentials=credentials)
-	spreadsheet_id = '1JFbvWJU1qVa8ZijU27ZlKgkobDp-meJC9makyVk1Ps8'
-	range_ = 'A:C'
-	major_dimension = 'COLUMNS'
-	request = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=range_, majorDimension=major_dimension)
-	response = request.execute()
-	return response['values'][0][0]
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	if "MVP" in event.message.text:
