@@ -15,6 +15,7 @@ import urllib.request
 
 
 
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -72,7 +73,6 @@ def apple_news():
 		#content+='{}\n{}\n{}\n'.format(title,link,link2)
 		content+='{}\n{}\n'.format(title,link)
 	return content
-
 def neihu_weather():
 	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
 	rs = requests.session()
@@ -279,7 +279,7 @@ def handle_message(event):
 	elif event.message.text=="林昶志":
 		message = TextSendMessage(text="帥哥")
 		line_bot_api.reply_message(event.reply_token,message)
-
+	
 
 import os
 if __name__ == "__main__":
