@@ -11,7 +11,10 @@ from urllib.request import urlretrieve
 import string
 import re
 import urllib.request
-
+import sys
+import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials as SAC
 
 
 
@@ -279,7 +282,28 @@ def handle_message(event):
 	elif event.message.text=="林昶志":
 		message = TextSendMessage(text="帥哥")
 		line_bot_api.reply_message(event.reply_token,message)
-	
+	elif "紀錄" in event.message.text:
+		line_bot_api.reply_message(event.reply_token,TextSendMessage(text="紀錄成功"))
+		pass
+		#GDriveJSON就輸入下載下來Json檔名稱
+		#GSpreadSheet是google試算表名稱
+		GDriveJSON = 'LineBot.json'
+		GSpreadSheet = 'durant_line (回應)'
+		while True:
+			try:
+				scope = ['https://spreadsheets.google.com/feeds']
+				key = SAC.from_json_keyfile_name(GDriveJSON, scope)
+				gc = gspread.authorize(key)
+				worksheet = gc.open(GSpreadSheet).sheet1
+			except Exception as ex:
+				print('無法連線Google試算表', ex)
+				sys.exit(1)
+			textt=""
+			textt+=event.message.text
+			if textt!="":
+				worksheet.append_row((datetime.datetime.now(), textt))
+				print('新增一列資料到試算表' ,GSpreadSheet)
+				return textt                 
 
 import os
 if __name__ == "__main__":
