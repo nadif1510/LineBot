@@ -282,7 +282,7 @@ def handle_message(event):
 	elif event.message.text=="林昶志":
 		message = TextSendMessage(text="帥哥")
 		line_bot_api.reply_message(event.reply_token,message)
-	elif "紀錄" in event.message.text:
+	elif event.message.text != "":
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text="紀錄成功"))
 		pass
 		#GDriveJSON就輸入下載下來Json檔名稱
