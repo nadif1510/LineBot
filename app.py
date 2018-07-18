@@ -311,6 +311,7 @@ def handle_message(event):
 				)
 			)
 			]))
+			
 		line_bot_api.reply_message(event.reply_token,Image_Carousel)
 	elif event.message.text=="緯創的事":
 		message = TextSendMessage(text="一日緯創人終身嚇死人")
