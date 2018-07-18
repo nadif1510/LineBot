@@ -14,6 +14,8 @@ import urllib.request
 import sys
 import datetime
 import gspread
+from bson import json_util
+import json
 from oauth2client.service_account import ServiceAccountCredentials as SAC
 
 
@@ -302,6 +304,7 @@ def handle_message(event):
 			textt=""
 			textt+=event.message.text
 			if textt!="":
+				json.dumps(my_dictionary, indent=4, sort_keys=True, default=str)
 				worksheet.append_row((datetime.datetime.now(), textt))
 				print('新增一列資料到試算表' ,GSpreadSheet)
 				return textt                 
