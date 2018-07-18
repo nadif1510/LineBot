@@ -294,7 +294,8 @@ def handle_message(event):
 				scope = ['https://spreadsheets.google.com/feeds']
 				key = SAC.from_json_keyfile_name(GDriveJSON, scope)
 				gc = gspread.authorize(key)
-				worksheet = gc.open(GSpreadSheet).sheet1
+				#worksheet = gc.open(GSpreadSheet).sheet1
+				worksheet = gc.open('https://docs.google.com/spreadsheets/d/1Ar-JTbsVzCdqQRW_3FXraLD0eNAitfG-uXfgA2e1djg/edit#gid=0')
 			except Exception as ex:
 				print('無法連線Google試算表', ex)
 				sys.exit(1)
