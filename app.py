@@ -291,8 +291,7 @@ def handle_message(event):
 		GSpreadSheet = 'BotTest'
 		while True:
 			try:
-				scope = ['https://spreadsheets.google.com/feeds',
-						'https://www.googleapis.com/auth/drive']
+				scope = ['https://spreadsheets.google.com/feeds']
 				key = SAC.from_json_keyfile_name(GDriveJSON, scope)
 				gc = gspread.authorize(key)
 				#worksheet = gc.open(GSpreadSheet).sheet1
