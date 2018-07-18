@@ -304,21 +304,11 @@ def handle_message(event):
 			textt=""
 			textt+=event.message.text
 			if textt!="":
-				worksheet.append_row((datetime.datetime.now(), textt))
+				worksheet.append_row(datetime.datetime.now(), textt)
 				print('新增一列資料到試算表' ,GSpreadSheet)
 				return textt                 
 
- class MyEncoder(json.JSONEncoder):
-    def default(self, obj):
-        # if isinstance(obj, datetime.datetime):
-        #     return int(mktime(obj.timetuple()))
-        if isinstance(obj, datetime):
-            return obj.strftime('%Y-%m-%d %H:%M:%S')
-        elif isinstance(obj, date):
-            return obj.strftime('%Y-%m-%d')
-        else:
-            return json.JSONEncoder.default(self, obj)
-     print json.dumps(dataMap, cls=MyEncoder)
+
 
 import os
 if __name__ == "__main__":
