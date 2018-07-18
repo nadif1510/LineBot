@@ -291,11 +291,12 @@ def handle_message(event):
 		GSpreadSheet = 'BotTest'
 		while True:
 			try:
-				scope = ['https://spreadsheets.google.com/feeds']
+				scope = ['https://spreadsheets.google.com/feeds',
+						'https://www.googleapis.com/auth/drive']
 				key = SAC.from_json_keyfile_name(GDriveJSON, scope)
 				gc = gspread.authorize(key)
 				#worksheet = gc.open(GSpreadSheet).sheet1
-				worksheet = gc.open('https://docs.google.com/spreadsheets/d/1Ar-JTbsVzCdqQRW_3FXraLD0eNAitfG-uXfgA2e1djg/edit#gid=0')
+				worksheet = gc.open(GSpreadSheet).sheet1
 			except Exception as ex:
 				print('無法連線Google試算表', ex)
 				sys.exit(1)
