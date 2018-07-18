@@ -17,6 +17,7 @@ import gspread
 from bson import json_util
 import json
 from oauth2client.service_account import ServiceAccountCredentials as SAC
+import random
 
 
 
@@ -67,16 +68,19 @@ def apple_news():
 	res = rs.get(target_url, verify=False)
 	res.encoding = 'utf-8'
 	soup = BeautifulSoup(res.text, 'html.parser')   
-	content = ""
+	content = []
 	for index, data in enumerate(soup.select('div.item a')):
-		if index ==15:           
+		if index ==20:           
 			return content
 		print(data)  
 		title = data.find('img')['alt']
 		link =  data['href']
 		link2 = 'https:'+ data.find('img')['data-src']
-		#content+='{}\n{}\n{}\n'.format(title,link,link2)
-		content+='{}\n{}\n'.format(title,link)
+		content.append(title)
+		content.append(link)
+		content.append(link2)
+	
+	
 	return content
 def neihu_weather():
 	target_url = 'https://www.cwb.gov.tw/V7/forecast/town368/7Day/6301000.htm'
@@ -261,8 +265,53 @@ def handle_message(event):
 		a=movie()
 		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 	elif event.message.text == "新聞":
+		#a=apple_news()
+		#line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
 		a=apple_news()
-		line_bot_api.reply_message(event.reply_token,TextSendMessage(text=a))
+		news_title=[]
+		news_link=[]
+		news_photo=[]    
+		for i in range(0,len(a),3):   
+			news_title.append(a[i])
+			news_link.append(a[i+1])
+			news_photo.append(a[i+2])
+		news_group=[]    #創一個List
+		#將剛剛的三個List加進來
+		news_group.append(news_title)
+		news_group.append(news_link)
+		news_group.append(news_photo)
+		#要做為key值的List
+		x=['title','link','link2']
+		#把兩個做成dictionary
+		dictionary = dict(zip(x,news_group))
+		p=random.sample(range(12),3)
+		Image_Carousel = TemplateSendMessage(
+		alt_text='Image_Carousel_Template',
+		template=ImageCarouselTemplate(
+		columns=[
+			ImageCarouselColumn(
+				image_url=dictionary['link2'][p[0]],
+				action=URITemplateAction(
+					uri=dictionary['link'][p[0]],
+					label=dictionary['title'][p[0]][0:11]
+				)
+			),
+			ImageCarouselColumn(
+				image_url=dictionary['link2'][p[2]],
+				action=URITemplateAction(
+					uri=dictionary['link'][p[2]],
+					label=dictionary['title'][p[2]][0:11]
+				)
+			),
+			ImageCarouselColumn(
+				image_url=dictionary['link2'][p[1]],
+				action=URITemplateAction(
+				uri=dictionary['link'][p[1]],
+				label=dictionary['title'][p[1]][0:11]
+				)
+			)
+			]))
+		line_bot_api.reply_message(event.reply_token,Image_Carousel)
 	elif event.message.text=="緯創的事":
 		message = TextSendMessage(text="一日緯創人終身嚇死人")
 		line_bot_api.reply_message(event.reply_token,message)
