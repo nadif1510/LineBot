@@ -304,7 +304,7 @@ def handle_message(event):
 			textt=""
 			textt+=event.message.text
 			if textt!="":
-				worksheet.append_row(datetime.datetime.now(), textt)
+				worksheet.append_row(textt)
 				print('新增一列資料到試算表' ,GSpreadSheet)
 				return textt                 
 
