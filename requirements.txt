@@ -10,5 +10,3 @@ pytz
 requests
 six
 lxml
-oauth2client
-gspread
