@@ -12,12 +12,12 @@ import string
 import re
 import urllib.request
 import sys
-import datetime
-import gspread
-from bson import json_util
-import json
-from oauth2client.service_account import ServiceAccountCredentials as SAC
-import random
+#import datetime
+#import gspread
+#from bson import json_util
+#import json
+#from oauth2client.service_account import ServiceAccountCredentials as SAC
+#import random
 
 
 
